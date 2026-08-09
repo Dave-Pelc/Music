@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dave Pelc — Symphony Blues</title>
+<meta name="description" content="Dave Pelc — blues songwriter working in soul blues, gospel blues, Delta blues, and symphony blues. Listen to The Weight of the Unspoken and The Man I Became.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep: #140f0b;
+    --bg-panel: #1c1510;
+    --bg-panel-2: #241b14;
+    --cream: #f2e6d0;
+    --cream-dim: #cbbc9e;
+    --ember: #b5592f;
+    --ember-bright: #d17444;
+    --gold: #cc9a44;
+    --muted: #8f7c60;
+    --hairline: rgba(204,154,68,0.22);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg-deep);
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-size:13px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+  }
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 28px;
+    background:linear-gradient(to bottom, rgba(20,15,11,0.85), transparent);
+  }
+  nav .name{font-family:'Fraunces',serif;font-size:19px;letter-spacing:0.04em;}
+  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
+  nav a{
+    font-size:13px;text-decoration:none;color:var(--cream-dim);
+    letter-spacing:0.08em;text-transform:uppercase;
+    transition:color 0.2s;
+  }
+  nav a:hover{color:var(--gold);}
+  @media(max-width:640px){ nav ul{display:none;} }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:flex-end;
+    background-image:
+      linear-gradient(to top, rgba(20,15,11,1) 0%, rgba(20,15,11,0.55) 42%, rgba(20,15,11,0.3) 60%, rgba(20,15,11,0.45) 100%),
+      url('images/hero-instruments.png');
+    background-size:cover;
+    background-position:center 30%;
+  }
+  .hero-inner{
+    width:100%;
+    padding:0 28px 230px;
+    max-width:1080px;
+    margin:0 auto;
+  }
+  .hero h1{
+    font-size:clamp(46px, 9vw, 96px);
+    line-height:0.96;
+    margin:14px 0 18px;
+    color:var(--cream);
+  }
+  .hero p.tag{
+    font-size:clamp(16px, 2vw, 20px);
+    color:var(--cream-dim);
+    max-width:520px;
+    line-height:1.5;
+    margin:0;
+  }
+  .hero-divider{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:0 0 14px;
+  }
+  .hero-divider svg{width:100%;height:auto;display:block;}
+  .scroll-cue{
+    position:absolute;bottom:145px;left:50%;transform:translateX(-50%);
+    font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--muted);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+  }
+  .scroll-cue .line{width:1px;height:34px;background:var(--muted);animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:0.3;}50%{opacity:1;}}
+
+  /* DIVIDER — waveform resolving into a musical staff: soul into symphony */
+  .divider{
+    background:var(--bg-deep);
+    padding:44px 0 8px;
+  }
+  .divider svg{width:100%;height:auto;display:block;}
+
+  /* SECTION SHARED */
+  section{padding:64px 0;position:relative;}
+  .section-head{margin-bottom:44px;}
+  .section-head h2{font-size:clamp(30px,4vw,42px);margin:8px 0 0;color:var(--cream);}
+
+  /* ABOUT */
+  .about{background:var(--bg-panel);padding-top:270px;}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.3fr 0.9fr;
+    gap:48px;
+    align-items:center;
+    max-width:1080px;
+  }
+  .about-grid p{
+    font-size:19px;
+    line-height:1.6;
+    color:var(--cream-dim);
+    margin:0 0 16px;
+  }
+  .about-grid p:first-of-type{color:var(--cream);font-size:21px;}
+  .art-frame{
+    border:1px solid var(--hairline);
+  }
+  .art-frame img{width:100%;height:auto;display:block;}
+  .sound-tags{
+    display:flex;flex-wrap:wrap;gap:9px;
+    margin-top:22px;
+  }
+  .sound-tags span{
+    font-size:12px;letter-spacing:0.09em;text-transform:uppercase;
+    padding:7px 13px;
+    border:1px solid var(--hairline);
+    border-radius:2px;
+    color:var(--gold);
+  }
+  .sound-tags span.hero-tag{
+    border-color:var(--ember-bright);
+    color:var(--cream);
+    background:rgba(181,89,47,0.18);
+  }
+  .about-scroll-cue{
+    position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+    font-size:12px;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--muted);
+    display:flex;flex-direction:column;align-items:center;gap:6px;
+    text-decoration:none;
+  }
+  .about-scroll-cue .line{width:1px;height:24px;background:var(--muted);animation:pulse 2s ease-in-out infinite;}
+  @media(max-width:820px){ .about-grid{grid-template-columns:1fr;} .art-frame{max-width:400px;margin:0 auto;} }
+
+  /* SPOTLIGHT */
+  .spotlight{
+    background:var(--bg-deep);
+  }
+  .spotlight-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:56px;
+    align-items:center;
+  }
+  .spotlight-art img{
+    border:1px solid var(--hairline);
+  }
+  .spotlight-copy h3{
+    font-size:clamp(28px,4vw,40px);
+    margin:10px 0 18px;
+    color:var(--cream);
+  }
+  .spotlight-copy p{
+    color:var(--cream-dim);
+    font-size:16px;
+    line-height:1.7;
+    margin:0 0 26px;
+    max-width:480px;
+  }
+  .embed-wrap{margin-top:22px;border-radius:8px;overflow:hidden;border:1px solid var(--hairline);}
+  .btn-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:22px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:12px 20px;
+    font-size:13px;letter-spacing:0.08em;text-transform:uppercase;
+    text-decoration:none;
+    border:1px solid var(--gold);
+    color:var(--gold);
+    transition:all 0.2s;
+  }
+  .btn:hover{background:var(--gold);color:var(--bg-deep);}
+  .btn.solid{background:var(--ember);border-color:var(--ember);color:var(--cream);}
+  .btn.solid:hover{background:var(--ember-bright);border-color:var(--ember-bright);}
+  @media(max-width:820px){ .spotlight-grid{grid-template-columns:1fr;} }
+
+  /* DISCOGRAPHY */
+  .discog{background:var(--bg-panel);}
+  .discog-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+  }
+  .album-card{
+    background:var(--bg-panel-2);
+    border:1px solid var(--hairline);
+    padding:24px;
+  }
+  .album-card img{margin-bottom:18px;}
+  .album-card h3{font-size:21px;margin:0 0 6px;color:var(--cream);}
+  .album-card .album-meta{font-size:13px;color:var(--muted);margin-bottom:16px;}
+  .album-card .embed-wrap{margin-top:16px;}
+  .album-card .links{display:flex;gap:16px;margin-top:16px;font-size:13px;}
+  .album-card .links a{color:var(--gold);text-decoration:none;border-bottom:1px solid transparent;}
+  .album-card .links a:hover{border-color:var(--gold);}
+  .album-card .blurb{font-size:14px;line-height:1.65;color:var(--cream-dim);margin:0 0 4px;}
+  @media(max-width:820px){ .discog-grid{grid-template-columns:1fr;} }
+
+  /* TRACKLIST */
+  .tracklist{margin-top:18px;border-top:1px solid var(--hairline);padding-top:4px;}
+  .tracklist summary{
+    cursor:pointer;
+    list-style:none;
+    font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--gold);
+    padding:12px 0;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .tracklist summary::-webkit-details-marker{display:none;}
+  .tracklist summary::after{content:"+";font-size:16px;color:var(--muted);}
+  .tracklist[open] summary::after{content:"–";}
+  .tracklist ol{
+    list-style:none;counter-reset:track;
+    margin:0 0 8px;padding:0;
+  }
+  .tracklist li{
+    counter-increment:track;
+    display:flex;justify-content:space-between;gap:12px;
+    font-size:13.5px;color:var(--cream-dim);
+    padding:7px 0;
+    border-top:1px solid rgba(204,154,68,0.08);
+  }
+  .tracklist li::before{
+    content:counter(track, decimal-leading-zero) "  ";
+    color:var(--muted);
+    margin-right:4px;
+  }
+  .tracklist li .t-name{flex:1;}
+  .tracklist li .t-name a{color:var(--cream-dim);text-decoration:none;border-bottom:1px solid transparent;}
+  .tracklist li .t-name a:hover{color:var(--gold);border-color:var(--gold);}
+  .tracklist li .t-time{color:var(--muted);font-variant-numeric:tabular-nums;}
+
+  /* CONTACT / FOOTER */
+  footer{
+    background:var(--bg-deep);
+    padding:90px 0 40px;
+    text-align:center;
+  }
+  footer h2{font-size:clamp(28px,4vw,38px);margin:10px 0 16px;}
+  footer p{color:var(--cream-dim);max-width:480px;margin:0 auto 34px;line-height:1.6;}
+  .platform-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:36px;}
+  .also-on-label{font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:18px;}
+  .platform-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;max-width:640px;margin:0 auto 60px;}
+  .platform-badges span{
+    font-size:12px;color:var(--cream-dim);
+    padding:6px 12px;border:1px solid var(--hairline);border-radius:2px;
+  }
+  .foot-note{font-size:12px;color:var(--muted);letter-spacing:0.04em;border-top:1px solid var(--hairline);padding-top:26px;margin-top:10px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <ul style="margin-left:auto;">
+    <li><a href="#about">About</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#contact">Listen Here</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Australian Blues Songwriter</div>
+    <h1>Dave Pelc</h1>
+    <p class="tag">He didn't set out to be a musician — he just needed somewhere to put what he couldn't say out loud. Real years, real scars, nothing invented.</p>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+  <div class="hero-divider">
+    <svg viewBox="0 0 1080 70" preserveAspectRatio="none">
+      <!-- left half: rough waveform (blues/soul) -->
+      <path d="M0,35 L20,35 L30,15 L40,53 L50,8 L60,58 L70,20 L80,47 L90,35 L100,43 L110,24 L120,39 L130,35 L140,48 L150,16 L160,35 L170,35 L180,25 L190,45 L200,35 L210,35 L220,12 L230,55 L240,35 L250,35 L260,30 L270,41 L280,35 L290,35 L300,20 L310,47 L320,35 L330,35 L340,32 L350,39 L360,35 L370,35 L380,24 L390,45 L400,35 L410,35 L420,33 L430,38 L440,35 L450,35 L460,28 L470,43 L480,35 L490,35 L500,34 L510,36 L520,35"
+        fill="none" stroke="#b5592f" stroke-width="2" opacity="0.9"/>
+      <!-- right half: five-line staff resolving out of the waveform (symphony) -->
+      <g stroke="#cc9a44" stroke-width="1" opacity="0.85">
+        <line x1="520" y1="21" x2="1080" y2="21"/>
+        <line x1="520" y1="28" x2="1080" y2="28"/>
+        <line x1="520" y1="35" x2="1080" y2="35"/>
+        <line x1="520" y1="42" x2="1080" y2="42"/>
+        <line x1="520" y1="49" x2="1080" y2="49"/>
+      </g>
+    </svg>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow">About</div>
+      <h2 style="margin-bottom:26px;">Written before it was ever meant to be heard</h2>
+      <p>Dave Pelc didn't start as a musician. He started as a man with too much going on inside and nowhere safe to put it — years of unsent messages and raw confessions, written for the people who stayed, the ones who left, and the ones he never found the right moment to reach.</p>
+      <p>Those words became <em>The Weight of the Unspoken</em>, a debut built on slow rock blues — heavy, honest, carved from the people who left their mark on him, the ones who stayed and the ones who didn't.</p>
+      <p><em>The Man I Became</em> picks up where that album left off. Not the falling apart, but the slower work of getting back up — eighteen songs written across the hardest stretch of his life, sitting with the man left standing in the wreckage and what he decided to do next. Sixty years of living went into it. Nothing on the record was invented.</p>
+      <p>Across both albums, the foundation is blues — though it doesn't stay fenced in by it. There's a touch of alt rock woven through, and somewhere along the way the sound started drifting toward something he calls symphony blues: cello, viola, and flute stepping out of the background and into the lead. The rest is easier to hear than explain — so listen and decide for yourself.</p>
+      <p>Whether the story continues is a question he's in no rush to answer. But the door is open, and so is he.</p>
+      <div class="sound-tags">
+        <span class="hero-tag">Symphony Blues</span>
+        <span>Soul Blues</span>
+        <span>Delta Blues</span>
+        <span>Gospel Blues</span>
+        <span>Alt Rock Blues</span>
+        <span>Alt Blues Rock</span>
+        <span>Slow Rock Blues</span>
+        <span>Blues Rock</span>
+        <span>Folk Blues</span>
+        <span>Alternate Rock</span>
+        <span>Slow Rock</span>
+        <span>Slow Blues Rock Ballad</span>
+      </div>
+    </div>
+    <div class="art-frame">
+      <img src="images/about-instruments.png" alt="Guitar, saxophone, and piano in warm stage light">
+    </div>
+  </div>
+  <a href="#music" class="about-scroll-cue"><span>Scroll</span><span class="line"></span></a>
+</section>
+
+<section class="discog" id="music">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Discography</div>
+      <h2>Full Catalog</h2>
+    </div>
+    <div class="discog-grid">
+      <div class="album-card">
+        <img src="images/weight-of-the-unspoken.jpg" alt="The Weight of the Unspoken — album cover">
+        <h3>The Weight of the Unspoken</h3>
+        <div class="album-meta">Album One · 19 Tracks · 61:23 · Slow Rock Blues · Released 1 Apr 2026</div>
+        <p class="blurb">Years of unsent letters and raw confessions, finally given a home — built entirely from the connections that shaped him.</p>
+        <div class="embed-wrap">
+          <iframe src="https://open.spotify.com/embed/album/2tSpsievx4iqD8ZXa55dA7?utm_source=generator&theme=0"
+            width="100%" height="152" frameborder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="links">
+          <a href="https://open.spotify.com/album/2tSpsievx4iqD8ZXa55dA7" target="_blank" rel="noopener">Spotify</a>
+          <a href="https://music.youtube.com/playlist?list=OLAK5uy_mrV4kcfB8b2l8ytDpADz7BGBqXaA-G_UA" target="_blank" rel="noopener">YouTube Music</a>
+        </div>
+        <details class="tracklist">
+          <summary>Track Listing</summary>
+          <ol>
+            <li><span class="t-name"><a href="lyrics/big-heart-loneliness.html">Big Heart Loneliness</a></span><span class="t-time">3:11</span></li>
+            <li><span class="t-name"><a href="lyrics/birthdays-ain-t-about-the-cake.html">Birthdays Ain't About the Cake</a></span><span class="t-time">3:13</span></li>
+            <li><span class="t-name"><a href="lyrics/don-t-you-get-lonely.html">Don't You Get Lonely?</a></span><span class="t-time">2:44</span></li>
+            <li><span class="t-name"><a href="lyrics/have-i-done-well.html">Have I Done Well?</a></span><span class="t-time">2:32</span></li>
+            <li><span class="t-name"><a href="lyrics/i-lied-to-myself.html">I Lied to Myself</a></span><span class="t-time">3:38</span></li>
+            <li><span class="t-name"><a href="lyrics/if-you-wanted-to.html">If You Wanted To</a></span><span class="t-time">2:31</span></li>
+            <li><span class="t-name"><a href="lyrics/i-m-still-far-from-flawless.html">I'm Still Far from Flawless</a></span><span class="t-time">3:03</span></li>
+            <li><span class="t-name"><a href="lyrics/letting-go.html">Letting Go</a></span><span class="t-time">2:43</span></li>
+            <li><span class="t-name"><a href="lyrics/life-without-spicey.html">Life Without Spicey</a></span><span class="t-time">2:46</span></li>
+            <li><span class="t-name"><a href="lyrics/monsters-and-demons.html">Monsters and Demons</a></span><span class="t-time">2:39</span></li>
+            <li><span class="t-name"><a href="lyrics/never-the-one.html">Never the One</a></span><span class="t-time">4:26</span></li>
+            <li><span class="t-name"><a href="lyrics/one-last-question.html">One Last Question?</a></span><span class="t-time">3:06</span></li>
+            <li><span class="t-name"><a href="lyrics/silence-of-the-unspoken.html">Silence of the Unspoken</a></span><span class="t-time">4:01</span></li>
+            <li><span class="t-name"><a href="lyrics/three-kinds-of-love.html">Three Kinds of Love</a></span><span class="t-time">3:48</span></li>
+            <li><span class="t-name"><a href="lyrics/waiting-in-the-silence.html">Waiting in the Silence</a></span><span class="t-time">3:28</span></li>
+            <li><span class="t-name"><a href="lyrics/what-is-the-question-i-keep-asking-myself.html">What Is the Question? (I Keep Asking Myself)</a></span><span class="t-time">3:20</span></li>
+            <li><span class="t-name"><a href="lyrics/who-am-i.html">Who Am I?</a></span><span class="t-time">3:55</span></li>
+            <li><span class="t-name"><a href="lyrics/you-ask-why.html">You Ask Why</a></span><span class="t-time">2:58</span></li>
+            <li><span class="t-name"><a href="lyrics/peace-for-both-our-sake.html">Peace for Both Our Sake</a></span><span class="t-time">3:21</span></li>
+          </ol>
+        </details>
+      </div>
+      <div class="album-card">
+        <img src="images/the-man-i-became.jpg" alt="The Man I Became — album cover">
+        <h3>The Man I Became</h3>
+        <div class="album-meta">Album Two · 18 Tracks · 65:17 · Blues-Rooted</div>
+        <p class="blurb">Not the falling apart, but the slower work of getting back up — eighteen songs from the hardest stretch of his life.</p>
+        <div class="embed-wrap">
+          <iframe src="https://open.spotify.com/embed/album/7N3cVRDLcL1jVViUaXDAU5?utm_source=generator&theme=0"
+            width="100%" height="152" frameborder="0" allowfullscreen=""
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="links">
+          <a href="https://open.spotify.com/album/7N3cVRDLcL1jVViUaXDAU5" target="_blank" rel="noopener">Spotify</a>
+          <a href="https://music.youtube.com/playlist?list=OLAK5uy_momK3xebTLDddwfT2vQkF__BLLB_YfoG0" target="_blank" rel="noopener">YouTube Music</a>
+        </div>
+        <details class="tracklist">
+          <summary>Track Listing</summary>
+          <ol>
+            <li><span class="t-name"><a href="lyrics/7-rules-of-men.html">7 Rules of Men</a></span><span class="t-time">3:38</span></li>
+            <li><span class="t-name"><a href="lyrics/before-you-walk-away.html">Before You Walk Away</a></span><span class="t-time">3:41</span></li>
+            <li><span class="t-name"><a href="lyrics/come-find-me.html">Come Find Me</a></span><span class="t-time">4:08</span></li>
+            <li><span class="t-name"><a href="lyrics/effort-has.html">Effort Has</a></span><span class="t-time">3:38</span></li>
+            <li><span class="t-name"><a href="lyrics/five-year-strangers.html">Five Year Strangers</a></span><span class="t-time">2:52</span></li>
+            <li><span class="t-name"><a href="lyrics/i-am-here-where-are-you.html">I Am Here, Where Are You</a></span><span class="t-time">3:13</span></li>
+            <li><span class="t-name"><a href="lyrics/my-brother.html">My Brother</a></span><span class="t-time">2:59</span></li>
+            <li><span class="t-name"><a href="lyrics/the-reason.html">The Reason</a></span><span class="t-time">3:50</span></li>
+            <li><span class="t-name"><a href="lyrics/promises-made.html">Promises Made</a></span><span class="t-time">3:38</span></li>
+            <li><span class="t-name"><a href="lyrics/right-here-nowhere-near.html">Right Here, Nowhere Near</a></span><span class="t-time">4:02</span></li>
+            <li><span class="t-name"><a href="lyrics/she-don-t-do-halfway.html">She Don't Do Halfway</a></span><span class="t-time">2:53</span></li>
+            <li><span class="t-name"><a href="lyrics/sixty-lessons.html">Sixty Lessons</a></span><span class="t-time">3:33</span></li>
+            <li><span class="t-name"><a href="lyrics/the-devil-you-don-t-know.html">The Devil You Don't Know</a></span><span class="t-time">4:01</span></li>
+            <li><span class="t-name"><a href="lyrics/these-three-things.html">These Three Things</a></span><span class="t-time">3:33</span></li>
+            <li><span class="t-name"><a href="lyrics/what-i-couldn-t-see.html">What I Couldn't See</a></span><span class="t-time">3:58</span></li>
+            <li><span class="t-name"><a href="lyrics/don-t-leave-in-flames.html">Don't Leave in Flames</a></span><span class="t-time">3:18</span></li>
+            <li><span class="t-name"><a href="lyrics/where-i-m-meant-to-be.html">Where I'm Meant To Be</a></span><span class="t-time">4:22</span></li>
+            <li><span class="t-name"><a href="lyrics/wild-and-free.html">Wild and Free</a></span><span class="t-time">4:00</span></li>
+          </ol>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Listen. Follow. Stay in it.</h2>
+    <p>More platforms and socials are on the way. For now, the music lives here.</p>
+    <div class="platform-row">
+      <a class="btn solid" href="https://open.spotify.com/album/2tSpsievx4iqD8ZXa55dA7" target="_blank" rel="noopener">Spotify</a>
+      <a class="btn solid" href="https://music.youtube.com/playlist?list=OLAK5uy_mrV4kcfB8b2l8ytDpADz7BGBqXaA-G_UA" target="_blank" rel="noopener">YouTube Music</a>
+    </div>
+    <div class="also-on-label">Also streaming on</div>
+    <div class="platform-badges">
+      <span>Amazon Music</span><span>iHeartRadio</span><span>Deezer</span><span>Tidal</span>
+      <span>Claro Música</span><span>SoundCloud</span><span>Mixcloud</span><span>Stationhead</span>
+      <span>ROXi</span><span>NetEase Cloud Music</span><span>JioSaavn</span><span>KKBox</span>
+      <span>Qobuz</span><span>Trebel</span><span>Movistar Música</span><span>LiveOne</span>
+      <span>Boomplay Music</span><span>Joox</span><span>AWA Music</span><span>QQ Music</span>
+      <span>Kugou</span><span>Kuwo</span><span>WeSing</span><span>Anghami</span><span>Gaana</span>
+    </div>
+    <div class="foot-note">© <span id="year"></span> Dave Pelc. Lyrics written by Dave Pelc. Composed and produced with AI tools; vocals are AI-modified.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
